@@ -5,6 +5,3 @@ node_modules/
 *.log
 
 yarn.lock
-
-build/
-dist/
