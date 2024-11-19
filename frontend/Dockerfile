@@ -1,6 +1,6 @@
 FROM node:18
 
-LABEL authors="UX535"
+LABEL authors="Robin P."
 
 WORKDIR /app
 

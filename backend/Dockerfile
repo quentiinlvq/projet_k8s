@@ -1,5 +1,5 @@
 FROM node:18
-LABEL authors="UX535"
+LABEL authors="Quentin L."
 
 #ENTRYPOINT ["top", "-b"]
 
