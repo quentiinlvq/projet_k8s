@@ -8,6 +8,6 @@ Lancer les conteneurs 1 par 1 :
 
 # Démarrage du projet 
 ## Backend
-yarn dev
-## Frontend
 yarn start
+## Frontend
+yarn dev
