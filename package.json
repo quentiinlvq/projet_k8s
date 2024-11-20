@@ -2,7 +2,9 @@
   "name": "website-devops",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"yarn --cwd backend start\" \"yarn --cwd frontend dev\""
+    "start:backend": "cd backend && yarn start",
+    "start:frontend": "cd frontend && yarn dev",
+    "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\""
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
