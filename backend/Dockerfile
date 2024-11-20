@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 2368
 VOLUME /app/logs
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
