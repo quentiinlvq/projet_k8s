@@ -1,14 +1,21 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize({
-    dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'root',
-    database: 'projet_k8s',
-});
+require('dotenv').config();
 
-sequelize.sync({ force: false }).then(() => {
-    console.log('Database synced successfully');
-}).catch(err => {
-    console.error('Unable to sync the database:', err);
+const express = require('express');
+const sequelize = require('./config/database');
+const config = require('./config/config');
+
+const app = express();
+app.use(express.json());
+
+sequelize.authenticate()
+    .then(() => {
+        console.log('Connexion à la base de données réussie!');
+    })
+    .catch(err => {
+        console.error('Impossible de se connecter à la base de données:', err);
+    });
+
+const PORT = config.app.port;
+app.listen(PORT, () => {
+    console.log(`L'application écoute sur le port ${PORT} en mode ${config.app.environment}`);
 });
