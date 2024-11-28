@@ -1,10 +1,8 @@
 FROM node:18
 
-LABEL authors="Robin P."
-
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install
 
@@ -12,6 +10,6 @@ COPY . .
 
 RUN yarn build
 
-EXPOSE 5173
+EXPOSE 80
 
 CMD ["yarn", "preview"]
