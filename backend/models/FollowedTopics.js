@@ -11,7 +11,7 @@ const FollowedTopic = sequelize.define('FollowedTopic', {
     user_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'User',
+            model: User,
             key: 'user_id'
         },
         allowNull: false
@@ -22,7 +22,7 @@ const FollowedTopic = sequelize.define('FollowedTopic', {
     },
     createdAt: {
         type: DataTypes.DATE,
-        defaultValue: Date.NOW
+        defaultValue: Date.now
     },
     updatedAt: {
         type: DataTypes.DATE,
