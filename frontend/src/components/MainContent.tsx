@@ -240,7 +240,6 @@ export default function MainContent() {
                                 <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                                     {article.content}
                                 </StyledTypography>
-                                {/* Affichage de la date de publication */}
                                 <Typography variant="caption" color="text.secondary">
                                     {article.publish_date && format(new Date(article.publish_date), 'MMMM dd, yyyy')}
                                 </Typography>

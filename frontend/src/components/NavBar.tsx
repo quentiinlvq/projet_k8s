@@ -12,7 +12,7 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import Sitemark from './SitemarkIcon';
-import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropDown';
+import ColorModeIconDropdown from './shared-theme/ColorModeIconDropDown';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     display: 'flex',
@@ -28,7 +28,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     padding: '8px 12px',
 }));
 
-export default function AppAppBar() {
+export default function NavBar() {
     const [open, setOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen: boolean) => () => {
@@ -52,22 +52,19 @@ export default function AppAppBar() {
                         <Sitemark />
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                             <Button variant="text" color="info" size="small">
-                                Features
+                                Actualité
                             </Button>
                             <Button variant="text" color="info" size="small">
-                                Testimonials
+                                Menaces
                             </Button>
                             <Button variant="text" color="info" size="small">
-                                Highlights
+                                Conseils
                             </Button>
                             <Button variant="text" color="info" size="small">
-                                Pricing
+                                Phishing
                             </Button>
                             <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                                FAQ
-                            </Button>
-                            <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                                Blog
+                                Technologies
                             </Button>
                         </Box>
                     </Box>

@@ -109,19 +109,19 @@ export default function Footer() {
                             Product
                         </Typography>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Features
+                            Actualité
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Testimonials
+                            Menaces
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Highlights
+                            Conseils
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Pricing
+                            Phishing
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            FAQs
+                            Technologies
                         </Link>
                     </Box>
                     <Box
@@ -132,16 +132,16 @@ export default function Footer() {
                         }}
                     >
                         <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-                            Company
+                            Compagnie
                         </Typography>
                         <Link color="text.secondary" variant="body2" href="#">
-                            About us
+                            A propos de nous
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Careers
+                            Carrière
                         </Link>
                         <Link color="text.secondary" variant="body2" href="#">
-                            Press
+                            Presse
                         </Link>
                     </Box>
                     <Box
