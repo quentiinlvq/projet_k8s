@@ -219,7 +219,6 @@ export default function MainContent() {
                             tabIndex={0}
                             className={focusedCardIndex === index ? 'Mui-focused' : ''}
                         >
-                            {/* For now, using a random image as a placeholder */}
                             <CardMedia
                                 component="img"
                                 alt={article.title}
