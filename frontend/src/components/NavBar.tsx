@@ -81,7 +81,7 @@ export default function NavBar() {
                             variant="text"
                             size="small"
                         >
-                            Sign in
+                            Se connecter
                         </Button>
                         <Button
                             href="/signup"
@@ -89,7 +89,7 @@ export default function NavBar() {
                             variant="contained"
                             size="small"
                         >
-                            Sign up
+                            S'inscrire
                         </Button>
                         <ColorModeIconDropdown />
                     </Box>
