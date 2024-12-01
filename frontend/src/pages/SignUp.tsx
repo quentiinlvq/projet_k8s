@@ -130,7 +130,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         variant="h4"
                         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
-                        Sign up
+                        Inscription
                     </Typography>
                     <Box
                         component="form"
@@ -138,14 +138,14 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
                     >
                         <FormControl>
-                            <FormLabel htmlFor="name">Full name</FormLabel>
+                            <FormLabel htmlFor="name">Nom complet</FormLabel>
                             <TextField
                                 autoComplete="name"
                                 name="name"
                                 required
                                 fullWidth
                                 id="name"
-                                placeholder="Jon Snow"
+                                placeholder="John Doe"
                                 error={nameError}
                                 helperText={nameErrorMessage}
                                 color={nameError ? 'error' : 'primary'}
@@ -167,7 +167,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                             />
                         </FormControl>
                         <FormControl>
-                            <FormLabel htmlFor="password">Password</FormLabel>
+                            <FormLabel htmlFor="password">Mot de passe</FormLabel>
                             <TextField
                                 required
                                 fullWidth
@@ -184,7 +184,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         </FormControl>
                         <FormControlLabel
                             control={<Checkbox value="allowExtraEmails" color="primary" />}
-                            label="I want to receive updates via email."
+                            label="Je souhaite recevoir la newsletter par e-mail."
                         />
                         <Button
                             type="submit"
@@ -192,7 +192,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                             variant="contained"
                             onClick={validateInputs}
                         >
-                            Sign up
+                            S'inscrire
                         </Button>
                     </Box>
                     <Divider>
@@ -202,27 +202,27 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         <Button
                             fullWidth
                             variant="outlined"
-                            onClick={() => alert('Sign up with Google')}
+                            onClick={() => alert('Non disponible pour le moment.')}
                             startIcon={<GoogleIcon />}
                         >
-                            Sign up with Google
+                            S'inscrire avec Google
                         </Button>
                         <Button
                             fullWidth
                             variant="outlined"
-                            onClick={() => alert('Sign up with Facebook')}
+                            onClick={() => alert('Non disponible pour le moment.')}
                             startIcon={<FacebookIcon />}
                         >
-                            Sign up with Facebook
+                            S'inscrire avec Facebook
                         </Button>
                         <Typography sx={{ textAlign: 'center' }}>
-                            Already have an account?{' '}
+                            Vous avez déjà un compte ?{' '}
                             <Link
-                                href="/material-ui/getting-started/templates/sign-in/"
+                                href="/signin"
                                 variant="body2"
                                 sx={{ alignSelf: 'center' }}
                             >
-                                Sign in
+                                Se connecter
                             </Link>
                         </Typography>
                     </Box>

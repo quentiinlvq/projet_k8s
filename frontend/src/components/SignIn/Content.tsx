@@ -12,29 +12,30 @@ import { SitemarkIcon } from '../shared-theme/CustomIcons';
 const items = [
     {
         icon: <SettingsSuggestRoundedIcon sx={{ color: 'text.secondary' }} />,
-        title: 'Adaptable performance',
+        title: 'À la pointe de l\'actualité Cyber',
         description:
-            'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+            'Grâce à l\'intégration de plus de 100 sources fiables, suivez la veille cybersécurité en une seule interface intuitive.',
     },
     {
         icon: <ConstructionRoundedIcon sx={{ color: 'text.secondary' }} />,
-        title: 'Built to last',
+        title: 'Une plateforme robuste',
         description:
-            'Experience unmatched durability that goes above and beyond with lasting investment.',
+            'Conçue pour durer, notre plateforme garantit une performance optimale et une protection continue contre les menaces émergentes.',
     },
     {
         icon: <ThumbUpAltRoundedIcon sx={{ color: 'text.secondary' }} />,
-        title: 'Great user experience',
+        title: 'Une expérience utilisateur fluide',
         description:
-            'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+            'Profitez d\'une interface simple et intuitive qui facilite votre navigation et améliore votre efficacité au quotidien.',
     },
     {
         icon: <AutoFixHighRoundedIcon sx={{ color: 'text.secondary' }} />,
-        title: 'Innovative functionality',
+        title: 'Des fonctionnalités innovantes',
         description:
-            'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+            'Restez en avance avec des outils conçus pour répondre aux défis modernes de la cybersécurité, tout en s\'adaptant à vos besoins.',
     },
 ];
+
 
 export default function Content() {
     return (

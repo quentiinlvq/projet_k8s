@@ -75,10 +75,20 @@ export default function NavBar() {
                             alignItems: 'center',
                         }}
                     >
-                        <Button color="primary" variant="text" size="small">
+                        <Button
+                            href="/signin"
+                            color="primary"
+                            variant="text"
+                            size="small"
+                        >
                             Sign in
                         </Button>
-                        <Button color="primary" variant="contained" size="small">
+                        <Button
+                            href="/signup"
+                            color="primary"
+                            variant="contained"
+                            size="small"
+                        >
                             Sign up
                         </Button>
                         <ColorModeIconDropdown />

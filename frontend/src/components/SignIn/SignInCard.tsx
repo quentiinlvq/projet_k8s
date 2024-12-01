@@ -96,7 +96,7 @@ export default function SignInCard() {
                 variant="h4"
                 sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
             >
-                Sign in
+                Connexion
             </Typography>
             <Box
                 component="form"
@@ -123,7 +123,7 @@ export default function SignInCard() {
                 </FormControl>
                 <FormControl>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <FormLabel htmlFor="password">Password</FormLabel>
+                        <FormLabel htmlFor="password">Mot de passe</FormLabel>
                         <Link
                             component="button"
                             type="button"
@@ -131,7 +131,7 @@ export default function SignInCard() {
                             variant="body2"
                             sx={{ alignSelf: 'baseline' }}
                         >
-                            Forgot your password?
+                            Mot de passe oublié ?
                         </Link>
                     </Box>
                     <TextField
@@ -151,21 +151,21 @@ export default function SignInCard() {
                 </FormControl>
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
+                    label="Se souvenir de moi"
                 />
                 <ForgotPassword open={open} handleClose={handleClose} />
                 <Button type="submit" fullWidth variant="contained" onClick={validateInputs}>
-                    Sign in
+                    Se connecter
                 </Button>
                 <Typography sx={{ textAlign: 'center' }}>
-                    Don&apos;t have an account?{' '}
+                    Pas encore de compte ?{' '}
                     <span>
             <Link
-                href="/material-ui/getting-started/templates/sign-in/"
+                href="/signup"
                 variant="body2"
                 sx={{ alignSelf: 'center' }}
             >
-              Sign up
+              S'inscrire
             </Link>
           </span>
                 </Typography>
@@ -175,18 +175,18 @@ export default function SignInCard() {
                 <Button
                     fullWidth
                     variant="outlined"
-                    onClick={() => alert('Sign in with Google')}
+                    onClick={() => alert('Non disponible pour le moment.')}
                     startIcon={<GoogleIcon />}
                 >
-                    Sign in with Google
+                    Se connecter avec Google
                 </Button>
                 <Button
                     fullWidth
                     variant="outlined"
-                    onClick={() => alert('Sign in with Facebook')}
+                    onClick={() => alert('Non disponible pour le moment.')}
                     startIcon={<FacebookIcon />}
                 >
-                    Sign in with Facebook
+                    Se connecter avec Facebook
                 </Button>
             </Box>
         </Card>
