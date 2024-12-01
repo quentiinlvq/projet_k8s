@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const DataSource = require('./DataSource');
+const Tag = require('./Tags');
 
 const Article = sequelize.define('Article', {
     article_id: {
@@ -32,10 +33,6 @@ const Article = sequelize.define('Article', {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    tags: {
-        type: DataTypes.STRING(255),
-        allowNull: true
-    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: Date.now
@@ -47,6 +44,18 @@ const Article = sequelize.define('Article', {
 }, {
     timestamps: false,
     tableName: 'articles'
+});
+
+Article.belongsToMany(Tag, {
+    through: 'ArticleTag',
+    foreignKey: 'article_id',
+    otherKey: 'tag_id'
+});
+
+Tag.belongsToMany(Article, {
+    through: 'ArticleTag',
+    foreignKey: 'tag_id',
+    otherKey: 'article_id'
 });
 
 module.exports = Article;

@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Article = require('./Article');
+const Tag = require('./Tags');
 
 const ArticleTag = sequelize.define('ArticleTag', {
     article_id: {
@@ -11,8 +12,12 @@ const ArticleTag = sequelize.define('ArticleTag', {
         },
         allowNull: false
     },
-    tag: {
-        type: DataTypes.STRING(255),
+    tag_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Tag,
+            key: 'tag_id'
+        },
         allowNull: false
     }
 }, {

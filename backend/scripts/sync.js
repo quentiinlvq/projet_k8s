@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Article = require('../models/Article');
 const ArticleTag = require('../models/ArticleTag');
 const FollowedTopics = require('../models/FollowedTopics');
+const Tags = require('../models/Tags');
 
 (async () => {
     try {
