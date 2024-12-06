@@ -25,11 +25,11 @@ const DataSource = sequelize.define('DataSource', {
     },
     createdAt: {
         type: DataTypes.DATE,
-        defaultValue: Date.now
+        defaultValue: DataTypes.NOW
     },
     updatedAt: {
         type: DataTypes.DATE,
-        defaultValue: Date.now
+        defaultValue: DataTypes.NOW
     }
 }, {
     timestamps: false,
