@@ -14,7 +14,7 @@ const items = [
         icon: <SettingsSuggestRoundedIcon sx={{ color: 'text.secondary' }} />,
         title: 'À la pointe de l\'actualité Cyber',
         description:
-            'Grâce à l\'intégration de plus de 100 sources fiables, suivez la veille cybersécurité en une seule interface intuitive.',
+            'Grâce à l\'intégration de plus de 100 sources fiables, vivez l\'expérience d\'une veille cybersécurité en une seule interface intuitive.',
     },
     {
         icon: <ConstructionRoundedIcon sx={{ color: 'text.secondary' }} />,
