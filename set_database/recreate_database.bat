@@ -3,8 +3,8 @@ chcp 65001
 cd /d %~dp0
 setlocal enabledelayedexpansion
 
-set MYSQL_USER=your_user
-set MYSQL_PASSWORD=your_password
+set MYSQL_USER=root
+set MYSQL_PASSWORD=root
 set MYSQL_HOST=localhost
 set DB_NAME=projet_k8s
 set DUMP_FILE=".\dump_database.sql"
