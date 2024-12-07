@@ -6,12 +6,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DB_HOST: localhost
+      DB_HOST: mysql
       DB_USER: root
       DB_PASSWORD: root
       DB_NAME: projet_k8s
     depends_on:
       - mysql
+    command: ["wait-for-it", "mysql:3306", "--", "yarn", "start"]
 
   mysql:
     image: mysql:8.0
@@ -22,6 +23,14 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
 
 volumes:
   mysql-data:
