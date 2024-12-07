@@ -4,11 +4,12 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN yarn install --production
 
 COPY . .
 
-#RUN yarn build
+COPY wait-for-it.sh /usr/local/bin/wait-for-it
+RUN chmod +x /usr/local/bin/wait-for-it
 
 EXPOSE 3000
 
