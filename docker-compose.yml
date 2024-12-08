@@ -11,7 +11,6 @@ services:
       DB_NAME: projet_k8s
     depends_on:
       - mysql
-    command: ["wait-for-it", "mysql:3306", "--", "yarn", "start"]
 
   mysql:
     image: mysql:8.0
