@@ -15,5 +15,6 @@ spec:
       containers:
         - name: website-devops-frontend
           image: website-devops-frontend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
