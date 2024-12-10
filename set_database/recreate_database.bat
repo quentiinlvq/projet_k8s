@@ -7,7 +7,7 @@ set MYSQL_USER=root
 set MYSQL_PASSWORD=root
 set MYSQL_HOST=localhost
 set DB_NAME=projet_k8s
-set DUMP_FILE=".\dump_database.sql"
+set DUMP_FILE=".\dump.sql"
 
 echo %DATE%
 echo %TIME%
