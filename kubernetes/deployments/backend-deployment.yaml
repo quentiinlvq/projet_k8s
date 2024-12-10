@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app
+  name: backend
 spec:
   selector:
     matchLabels:
-      app: node-app
+      app: backend
   template:
     metadata:
       labels:
-        app: node-app
+        app: backend
     spec:
       containers:
         - name: website-devops-backend
