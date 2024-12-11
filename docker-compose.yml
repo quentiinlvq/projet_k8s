@@ -4,12 +4,12 @@ services:
       context: ./backend
     image: website-devops-backend:latest
     ports:
-      - "3000:3000"
+      - "${API_PORT}:3000"
     environment:
-      DB_HOST: mysql
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_NAME: projet_k8s
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
     depends_on:
       - mysql
     command: ["wait-for-it", "mysql:3306", "--", "yarn", "start"]
@@ -19,10 +19,10 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: projet_k8s
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     ports:
-      - "3306:3306"
+      - "${DB_PORT}:3306"
     volumes:
       - mysql-data:/var/lib/mysql
       - ./set_database:/docker-entrypoint-initdb.d

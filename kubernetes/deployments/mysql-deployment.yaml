@@ -16,7 +16,10 @@ spec:
           image: mysql:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "root"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: root-password
             - name: MYSQL_DATABASE
               value: "projet_k8s"
           ports:
