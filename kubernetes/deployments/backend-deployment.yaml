@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: website-devops-backend
+          image: website-devops-backend:latest
+          imagePullPolicy: Never
+          env:
+            - name: DB_HOST
+              value: "mysql"
+            - name: DB_USER
+              value: "root"
+            - name: DB_PASSWORD
+              value: "root"
+            - name: DB_NAME
+              value: "projet_k8s"
+          ports:
+            - containerPort: 3000

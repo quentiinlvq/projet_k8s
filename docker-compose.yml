@@ -2,6 +2,7 @@ services:
   backend:
     build:
       context: ./backend
+    image: website-devops-backend:latest
     ports:
       - "3000:3000"
     environment:
@@ -12,6 +13,8 @@ services:
     depends_on:
       - mysql
     command: ["wait-for-it", "mysql:3306", "--", "yarn", "start"]
+    networks:
+      - app-network
 
   mysql:
     image: mysql:8.0
@@ -22,15 +25,25 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./set_database:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
 
   frontend:
     build:
       context: ./frontend
+    image: website-devops-frontend:latest
     ports:
       - "8080:80"
     depends_on:
       - backend
+    networks:
+      - app-network
 
 volumes:
   mysql-data:
     driver: local
+
+networks:
+  app-network:
+    driver: bridge
