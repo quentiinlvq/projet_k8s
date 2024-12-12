@@ -60,62 +60,43 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignUp(props: { disableCustomTheme?: boolean }) {
-    const [emailError, setEmailError] = React.useState(false);
-    const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-    const [passwordError, setPasswordError] = React.useState(false);
-    const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-    const [nameError, setNameError] = React.useState(false);
-    const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [error, setError] = React.useState('');
+    const [success, setSuccess] = React.useState('');
 
-    const validateInputs = () => {
-        const email = document.getElementById('email') as HTMLInputElement;
-        const password = document.getElementById('password') as HTMLInputElement;
-        const name = document.getElementById('name') as HTMLInputElement;
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
-        let isValid = true;
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password,
+                }),
+            });
 
-        if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-            setEmailError(true);
-            setEmailErrorMessage('Please enter a valid email address.');
-            isValid = false;
-        } else {
-            setEmailError(false);
-            setEmailErrorMessage('');
+            if (response.ok) {
+                setSuccess('Inscription réussie !');
+                setError('');
+                setUsername('');
+                setEmail('');
+                setPassword('');
+            } else {
+                const errorData = await response.json();
+                setError(errorData.message || 'Erreur lors de l’inscription.');
+                setSuccess('');
+            }
+        } catch {
+            setError('Une erreur est survenue. Veuillez réessayer plus tard.');
+            setSuccess('');
         }
-
-        if (!password.value || password.value.length < 6) {
-            setPasswordError(true);
-            setPasswordErrorMessage('Password must be at least 6 characters long.');
-            isValid = false;
-        } else {
-            setPasswordError(false);
-            setPasswordErrorMessage('');
-        }
-
-        if (!name.value || name.value.length < 1) {
-            setNameError(true);
-            setNameErrorMessage('Name is required.');
-            isValid = false;
-        } else {
-            setNameError(false);
-            setNameErrorMessage('');
-        }
-
-        return isValid;
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        if (nameError || emailError || passwordError) {
-            event.preventDefault();
-            return;
-        }
-        const data = new FormData(event.currentTarget);
-        console.log({
-            name: data.get('name'),
-            lastName: data.get('lastName'),
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     return (
@@ -137,18 +118,19 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         onSubmit={handleSubmit}
                         sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
                     >
+                        {error && <Typography color="error">{error}</Typography>}
+                        {success && <Typography color="success.main">{success}</Typography>}
                         <FormControl>
-                            <FormLabel htmlFor="name">Nom complet</FormLabel>
+                            <FormLabel htmlFor="username">Nom complet</FormLabel>
                             <TextField
-                                autoComplete="name"
-                                name="name"
+                                autoComplete="username"
+                                name="username"
                                 required
                                 fullWidth
-                                id="name"
+                                id="username"
                                 placeholder="John Doe"
-                                error={nameError}
-                                helperText={nameErrorMessage}
-                                color={nameError ? 'error' : 'primary'}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </FormControl>
                         <FormControl>
@@ -160,10 +142,8 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                                 placeholder="your@email.com"
                                 name="email"
                                 autoComplete="email"
-                                variant="outlined"
-                                error={emailError}
-                                helperText={emailErrorMessage}
-                                color={passwordError ? 'error' : 'primary'}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </FormControl>
                         <FormControl>
@@ -176,22 +156,15 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                                 type="password"
                                 id="password"
                                 autoComplete="new-password"
-                                variant="outlined"
-                                error={passwordError}
-                                helperText={passwordErrorMessage}
-                                color={passwordError ? 'error' : 'primary'}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </FormControl>
                         <FormControlLabel
                             control={<Checkbox value="allowExtraEmails" color="primary" />}
                             label="Je souhaite recevoir la newsletter par e-mail."
                         />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            onClick={validateInputs}
-                        >
+                        <Button type="submit" fullWidth variant="contained">
                             S'inscrire
                         </Button>
                     </Box>
@@ -217,11 +190,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
                         </Button>
                         <Typography sx={{ textAlign: 'center' }}>
                             Vous avez déjà un compte ?{' '}
-                            <Link
-                                href="/signin"
-                                variant="body2"
-                                sx={{ alignSelf: 'center' }}
-                            >
+                            <Link href="/signin" variant="body2" sx={{ alignSelf: 'center' }}>
                                 Se connecter
                             </Link>
                         </Typography>

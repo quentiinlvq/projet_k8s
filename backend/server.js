@@ -4,10 +4,9 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/database');
 const config = require('./config/config');
-const tagsRouter = require('./routes/tagsRoute')
-const articlesRouter = require('./routes/articlesRoute')
+const tagsRouter = require('./routes/tagsRoute');
+const articlesRouter = require('./routes/articlesRoute');
 const authRoute = require('./routes/authRoute'); // Import de l'authRoute
-
 
 const app = express();
 app.use(express.json());
@@ -32,9 +31,10 @@ sequelize.sync({ force: false })
         console.error('Erreur lors de la synchronisation des modèles:', err);
     });
 
+// Ajout des routes
 app.use('/api', tagsRouter);
 app.use('/api', articlesRouter);
-app.use('/api/auth', authRoute);
+app.use('/api/auth', authRoute); // Routes pour inscription, connexion et déconnexion
 
 const PORT = config.app.port;
 app.listen(PORT, () => {
