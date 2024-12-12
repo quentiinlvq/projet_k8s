@@ -17,12 +17,24 @@ spec:
           imagePullPolicy: Never
           env:
             - name: DB_HOST
-              value: "mysql"
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: DB_HOST
             - name: DB_USER
-              value: "root"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: db-user
             - name: DB_PASSWORD
-              value: "root"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: db-password
             - name: DB_NAME
-              value: "projet_k8s"
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: DB_NAME
           ports:
             - containerPort: 3000

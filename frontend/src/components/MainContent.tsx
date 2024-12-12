@@ -110,7 +110,7 @@ export default function MainContent() {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/articles');
+                const response = await axios.get('http://backend:3000/api/articles');
                 setArticles(response.data);
             } catch (error) {
                 console.error('Failed to fetch articles:', error);
@@ -119,7 +119,7 @@ export default function MainContent() {
 
         const fetchTags = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/tags');
+                const response = await axios.get('http://backend:3000/api/tags');
                 setTags(response.data.map((tag: { name: string }) => tag.name));
             } catch (error) {
                 console.error('Failed to fetch tags:', error);
