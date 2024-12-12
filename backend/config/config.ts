@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     app: {
         port: process.env.PORT || 3000,
         environment: process.env.NODE_ENV || 'dev',
@@ -22,3 +22,5 @@ module.exports = {
         expiresIn: process.env.JWT_EXPIRES_IN || '1h'
     }
 };
+
+export default config;

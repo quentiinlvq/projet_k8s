@@ -1,9 +1,9 @@
-const sequelize = require('../config/database');
-const User = require('../models/User');
-const Article = require('../models/Article');
-const ArticleTag = require('../models/ArticleTag');
-const FollowedTopics = require('../models/FollowedTopics');
-const Tags = require('../models/Tags');
+import sequelize from '../config/database';
+import User from '../models/User';
+import Article from '../models/Article';
+import ArticleTag from '../models/ArticleTag';
+import FollowedTopics from '../models/FollowedTopics';
+import Tags from '../models/Tags';
 
 (async () => {
     try {

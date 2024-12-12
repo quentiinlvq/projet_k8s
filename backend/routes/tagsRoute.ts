@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const Tags = require('../models/Tags');
+import express, { Request, Response } from 'express';
+import Tags from '../models/Tags';
 
-router.get('/tags', async (req, res) => {
+const router = express.Router();
+
+router.get('/tags', async (req: Request, res: Response): Promise<void> => {
     try {
         const tags = await Tags.findAll();
         res.json(tags);
@@ -12,4 +13,4 @@ router.get('/tags', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

@@ -106,11 +106,13 @@ export default function MainContent() {
     const [articles, setArticles] = useState<any[]>([]);
     const [tags, setTags] = useState<string[]>([]);
     const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(null);
+    //const API_URL = import.meta.env.REACT_APP_API_URL;
+    const API_URL = 'http://localhost:3000';
 
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('http://backend:3000/api/articles');
+                const response = await axios.get(`${API_URL}/api/articles`);
                 setArticles(response.data);
             } catch (error) {
                 console.error('Failed to fetch articles:', error);
@@ -119,7 +121,7 @@ export default function MainContent() {
 
         const fetchTags = async () => {
             try {
-                const response = await axios.get('http://backend:3000/api/tags');
+                const response = await axios.get(`${API_URL}/api/tags`);
                 setTags(response.data.map((tag: { name: string }) => tag.name));
             } catch (error) {
                 console.error('Failed to fetch tags:', error);
