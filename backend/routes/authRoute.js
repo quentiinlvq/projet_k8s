@@ -1,42 +1,40 @@
 const express = require('express');
-const session = require('express-session');
-const app = express();
-const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const User = require('../models/User'); // Assurez-vous que le modèle User est correctement configuré
+const router = express.Router();
 
-app.use(
-    session({
-        secret: 'SECRET',
-        resave: false,
-        saveUninitialized: false,
-        cookie: { secure: false }, // Mettre à true si HTTPS est utilisé
-    })
-);
+// Route pour l'inscription
+router.post('/register', async (req, res) => {
+    const { username, email, password } = req.body;
 
-app.post('/auth/login', async (req, res) => {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-    if (!user || user.password !== password) {
-        return res.status(401).json({ message: 'Email ou mot de passe incorrect.' });
+    // Validation des données
+    if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Tous les champs sont requis.' });
     }
 
-    req.session.userId = user._id;
-    res.json({ message: 'Connexion réussie.' });
-});
-
-app.get('/protected', (req, res) => {
-    if (!req.session.userId) {
-        return res.status(401).json({ message: 'Non autorisé.' });
-    }
-    res.json({ message: 'Bienvenue dans la zone protégée.' });
-});
-
-app.post('/auth/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.status(500).json({ message: 'Erreur lors de la déconnexion.' });
+    try {
+        // Vérifier si l'utilisateur existe déjà
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Cet email est déjà utilisé.' });
         }
-        res.clearCookie('connect.sid'); // Effacer le cookie de session
-        res.json({ message: 'Déconnexion réussie.' });
-    });
+
+        // Hacher le mot de passe
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Créer un nouvel utilisateur
+        const newUser = await User.create({
+            username,
+            email,
+            password_hash: hashedPassword,
+        });
+
+        // Réponse en cas de succès
+        res.status(201).json({ message: 'Utilisateur créé avec succès.', userId: newUser.user_id });
+    } catch (err) {
+        console.error('Erreur lors de la création de l’utilisateur :', err);
+        res.status(500).json({ message: 'Erreur interne du serveur.' });
+    }
 });
+
+module.exports = router;
