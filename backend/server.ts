@@ -1,9 +1,9 @@
-import express, { Application } from 'express';
-import cors from 'cors';
 import sequelize from './config/database';
 import config from './config/config';
 import tagsRouter from './routes/tagsRoute';
 import articlesRouter from './routes/articlesRoute';
+import express, {Application} from 'express';
+import cors from 'cors';
 
 const app: Application = express();
 app.use(express.json());
