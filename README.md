@@ -31,7 +31,7 @@ Pour lancer l'application en local à l'aide de Docker, exécutez la commande su
 docker-compose up --build
 ```
 
-# Déploiement avec Kubernetes ☸️
+## Déploiement avec Kubernetes ☸️
 
 Pour déployer l'application sur un cluster Kubernetes, vous devez d'abord configurer un cluster Kubernetes local avec Minikube ou sur une plateforme cloud.
 ```bash
